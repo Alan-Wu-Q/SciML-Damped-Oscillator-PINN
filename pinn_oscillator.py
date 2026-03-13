@@ -3,7 +3,7 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-from google.colab import files # 专门用于 Colab 自动下载
+from google.colab import files
 
 # ==========================================
 # --- Fig 1: 物理系统原理图 (用代码画示意图) ---
