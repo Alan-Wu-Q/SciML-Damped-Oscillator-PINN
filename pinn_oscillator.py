@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # 1. 定义神经网络结构
+print("code is running...")
 class FCN(nn.Module):
     def __init__(self, N_INPUT, N_OUTPUT, N_HIDDEN, N_LAYERS):
         super().__init__()
