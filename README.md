@@ -1,9 +1,12 @@
-# SciML: Damped Harmonic Oscillator using PINNs
+## Experimental Results
 
-This repository implements a Physics-Informed Neural Network (PINN) to solve the damped harmonic oscillator equation.
+To investigate the convergence of the PINN, we compared the results at different training stages.
 
-## Results
-![PINN Result](result_plot.png)
+| 3,000 Iterations | 10,000 Iterations |
+| :---: | :---: |
+| ![3000 Itr](result_plot3k.png) | ![10000 Itr](result_plot10k.png) |
+| *Model captures the trend but has phase/amplitude error.* | *Model achieves near-perfect alignment with exact solution.* |
 
-## How it works
-The model uses a standard MLP with a custom loss function that incorporates the governing differential equation: $m\ddot{u} + \mu\dot{u} + ku = 0$.
+### Observations
+- **Under-fitting (Left):** With only 3,000 iterations, the physics loss has not fully regularized the network, resulting in noticeable deviations after $t=4$.
+- **Convergence (Right):** At 10,000 iterations, the PINN perfectly recovers the damping coefficient and oscillation frequency, demonstrating the power of embedding the ODE into the loss function.
