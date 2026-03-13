@@ -1,12 +1,20 @@
 ## Experimental Results
 
-To investigate the convergence of the PINN, we compared the results at different training stages.
+### 1. Physical System Schematic
+<img src="results/fig1_schematic.png" width="500">
 
-| 3,000 Iterations | 10,000 Iterations |
+### 2. Comparison: PINN vs. Vanilla Neural Network
+We demonstrate that without physics constraints, a standard NN fails to generalize from a single data point.
+| Vanilla NN (Fail) | PINN Evolution |
 | :---: | :---: |
-| ![3000 Itr](result_plot3k.png) | ![10000 Itr](result_plot10k.png) |
-| *Model captures the trend but has phase/amplitude error.* | *Model achieves near-perfect alignment with exact solution.* |
+| <img src="results/fig2_vanilla.png" width="400"> | <img src="results/fig3_evolution.png" width="400"> |
 
-### Observations
-- **Under-fitting (Left):** With only 3,000 iterations, the physics loss has not fully regularized the network, resulting in noticeable deviations after $t=4$.
-- **Convergence (Right):** At 10,000 iterations, the PINN perfectly recovers the damping coefficient and oscillation frequency, demonstrating the power of embedding the ODE into the loss function.
+### 3. Extrapolation & Derivative Accuracy
+PINN shows remarkable performance in regions without training data and accurately predicts the first derivative (velocity).
+| Extrapolation Performance | Velocity Prediction |
+| :---: | :---: |
+| <img src="results/fig4_extrapolation.png" width="400"> | <img src="results/fig5_velocity.png" width="400"> |
+
+### 4. Loss Convergence
+The decomposition of loss functions shows the balance between data fitting and physics residuals.
+<img src="results/fig6_loss.png" width="500">
